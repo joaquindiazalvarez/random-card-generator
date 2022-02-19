@@ -32,65 +32,36 @@ window.onload = function() {
   let number_random = Math.floor(Math.random() * 13);
   let type_random = Math.floor(Math.random() * 4);
   let parent = document.querySelector(".container-fluid div");
-  if (type[type_random] === "club") {
+  function addContent(symbol, number) {
     let add =
       '<div id="icono1">' +
-      symbol_club +
+      symbol +
       "</div>" +
-      number[number_random] +
+      number +
       '<div id="icono2">' +
-      symbol_club +
+      symbol +
       "</div>";
     parent.innerHTML = add;
+  }
+  if (type[type_random] === "club" || type[type_random] === "spade") {
+    if (type[type_random] === "club") {
+      addContent(symbol_club, number[number_random]);
+    }
+    if (type[type_random] === "spade") {
+      addContent(symbol_spade, number[number_random]);
+    }
     if (parent.className === "card-red") {
       document.querySelector(".card-red").className = "card-black";
     }
-    //document.querySelector(".card-red").className = "card-black";
-    //parent.appendChild(htmlcodeappend);
-  } else if (type[type_random] === "spade") {
-    let add =
-      '<div id="icono1">' +
-      symbol_spade +
-      "</div>" +
-      number[number_random] +
-      '<div id="icono2">' +
-      symbol_spade +
-      "</div>";
-    //let htmlcodeappend = document.createElement(add);
-    parent.innerHTML = add;
-    if (parent.className === "card-red") {
-      document.querySelector(".card-red").className = "card-black";
+  }
+  if (type[type_random] === "diamond" || type[type_random] === "heart")
+    if (type[type_random] === "diamond") {
+      addContent(symbol_diamond, number[number_random]);
     }
-    //parent.appendChild(htmlcodeappend);
-  } else if (type[type_random] === "diamond") {
-    let add =
-      '<div id="icono1">' +
-      symbol_diamond +
-      "</div>" +
-      number[number_random] +
-      '<div id="icono2">' +
-      symbol_diamond +
-      "</div>";
-    //let htmlcodeappend = document.createElement(add);
-    parent.innerHTML = add;
-    if (parent.className === "card-black") {
-      document.querySelector(".card-black").className = "card-red";
-    }
-    //parent.appendChild(htmlcodeappend);
-  } else if (type[type_random] === "heart") {
-    let add =
-      '<div id="icono1">' +
-      symbol_heart +
-      "</div>" +
-      number[number_random] +
-      '<div id="icono2">' +
-      symbol_heart +
-      "</div>";
-    //let htmlcodeappend = document.createElement(add);
-    parent.innerHTML = add;
-    if (parent.className === "card-black") {
-      document.querySelector(".card-black").className = "card-red";
-    }
-    //parent.appendChild(htmlcodeappend);
+  if (type[type_random] === "heart") {
+    addContent(symbol_heart, number[number_random]);
+  }
+  if (parent.className === "card-black") {
+    document.querySelector(".card-black").className = "card-red";
   }
 };
