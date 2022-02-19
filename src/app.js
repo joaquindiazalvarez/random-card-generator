@@ -1,7 +1,7 @@
 /* eslint-disable */
 import "bootstrap";
 import "./style.css";
-
+let button = document.querySelector(".btn");
 window.onload = function() {
   //write your code here
   let symbol_club =
@@ -51,17 +51,20 @@ window.onload = function() {
       addContent(symbol_spade, number[number_random]);
     }
     if (parent.className === "card-red") {
+      alert("helloworld");
       document.querySelector(".card-red").className = "card-black";
     }
   }
-  if (type[type_random] === "diamond" || type[type_random] === "heart")
+  if (type[type_random] === "diamond" || type[type_random] === "heart") {
     if (type[type_random] === "diamond") {
       addContent(symbol_diamond, number[number_random]);
     }
-  if (type[type_random] === "heart") {
-    addContent(symbol_heart, number[number_random]);
+    if (type[type_random] === "heart") {
+      addContent(symbol_heart, number[number_random]);
+    }
+    if (parent.className === "card-black") {
+      document.querySelector(".card-black").className = "card-red";
+    }
   }
-  if (parent.className === "card-black") {
-    document.querySelector(".card-black").className = "card-red";
-  }
+  button.addEventListener("click", window.onload);
 };
