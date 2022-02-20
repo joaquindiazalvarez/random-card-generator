@@ -2,6 +2,8 @@
 import "bootstrap";
 import "./style.css";
 let button = document.querySelector(".btn");
+let count = 10;
+let reset = false;
 window.onload = function() {
   //write your code here
   let symbol_club =
@@ -51,7 +53,6 @@ window.onload = function() {
       addContent(symbol_spade, number[number_random]);
     }
     if (parent.className === "card-red") {
-      alert("helloworld");
       document.querySelector(".card-red").className = "card-black";
     }
   }
@@ -67,4 +68,16 @@ window.onload = function() {
     }
   }
   button.addEventListener("click", window.onload);
+  let timer = document.querySelector(".timer");
+  let interval = window.setInterval(() => {
+    timer.innerHTML = "Generating new card in " + count + " Seconds...";
+    count--;
+    if (count === -1) {
+      window.clearInterval(interval);
+      count = 10;
+      window.onload();
+
+      return 0;
+    }
+  }, 1000);
 };
